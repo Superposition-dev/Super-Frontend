@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 
 const getAxiosInstance = (ContentType: string) => {
   const config: AxiosRequestConfig = {
-    baseURL: 'localhost:3000',
+    baseURL: 'localhost:5173',
     headers: {
       'Content-Type': ContentType,
     },
