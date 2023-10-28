@@ -21,8 +21,10 @@ export const Main = styled.div`
   margin: 0 auto;
   width: 360px;
   height: 100vh;
-  background-color: #fff;
-
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   &::-webkit-scrollbar {
     display: none;
   }
