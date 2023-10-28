@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { worker } from './mock/browser';
-import Layout from './components/common/Layout';
 import './styles/reset.css';
+import Routers from './routes/routes';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -16,9 +16,7 @@ if (import.meta.env.MODE === 'development') {
 
 function App() {
   return <QueryClientProvider client={queryClient}>
-    <Layout>
-      <div>App</div>
-    </Layout>
+      <Routers/>
   </QueryClientProvider>;
 }
 

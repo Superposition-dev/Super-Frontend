@@ -1,15 +1,12 @@
 import * as S from './styles';
+import { Outlet } from 'react-router-dom';
 
-import { useRef } from 'react';
-
-
-function Layout({ children }: { children: React.ReactNode }) {
-  const mainContainerRef = useRef<HTMLDivElement>(null);
+function Layout() {
 
   return (
     <S.Layout>
       <S.Main>
-          <div ref={mainContainerRef}>{children}</div>
+        <Outlet/>
       </S.Main>
     </S.Layout>
   );
