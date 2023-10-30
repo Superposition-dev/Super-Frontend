@@ -1,18 +1,26 @@
 import styled from '@emotion/styled';
 import theme from '../../../styles/theme';
+import { Link } from 'react-router-dom';
 
 export const Header = styled.header`
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  height: 5.2rem;
-  background-color: #000;
+  height: 4.8rem;
+  background-color: ${theme.colors.black};
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `;
 
 export const LogoWrap = styled.div`
-  width: 14rem;
   height: 2.2rem;
+  @media (max-width: 420px) {
+    height: 1.6rem;
+  }
 `;
 
 export const Logo = styled.img`
@@ -21,15 +29,16 @@ export const Logo = styled.img`
   object-fit: fill;
 `;
 
-export const Nav = styled.ul`
+export const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
-export const NavItem = styled.li<{ color?: string }>`
+export const NavItem = styled(Link)<{ color?: string }>`
   cursor: pointer;
   ${theme.font.mobile.r14};
   color: ${(props) => (props.color === 'gray' ? theme.colors.gray : theme.colors.white)};
+  text-decoration: none;
 `;
