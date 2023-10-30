@@ -1,4 +1,5 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import theme from '../../../styles/theme';
 
 export const Header = styled.header`
   display: flex;
@@ -18,17 +19,17 @@ export const Logo = styled.img`
   width: 100%;
   height: 100%;
   object-fit: fill;
-`
+`;
 
 export const Nav = styled.ul`
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
+  gap: 1rem;
 `;
 
-export const NavItem = styled.li`
-  cursor: pointer;  
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
-`
+export const NavItem = styled.li<{ color?: string }>`
+  cursor: pointer;
+  ${theme.font.mobile.r14};
+  color: ${(props) => (props.color === 'gray' ? theme.colors.gray : theme.colors.white)};
+`;
