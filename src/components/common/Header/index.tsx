@@ -7,8 +7,10 @@ function Header() {
         <S.Logo src="/images/logo.png" alt="logo" />
       </S.LogoWrap>
       <S.Nav>
-        <S.NavItem color="gray">About us</S.NavItem>
-        <S.NavItem>작품 목록</S.NavItem>
+        <S.NavItem to="/" color="gray">
+          About us
+        </S.NavItem>
+        <S.NavItem to="/products">작품 목록</S.NavItem>
       </S.Nav>
     </S.Header>
   );
