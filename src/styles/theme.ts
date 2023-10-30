@@ -8,6 +8,11 @@ const colors = {
 
 const font = {
   mobile: {
+    r30: {
+      fontSize: '3rem',
+      fontWeight: '400',
+      lineHeight: '1.2',
+    },
     b20: {
       fontSize: '2rem',
       fontWeight: '700',

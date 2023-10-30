@@ -1,10 +1,12 @@
-import React from 'react'
-import Main from '../components/Main'
+import React from 'react';
+import Main from '../components/Main';
 
 function MainPage() {
   return (
-    <div><Main/></div>
-  )
+    <>
+      <Main />
+    </>
+  );
 }
 
-export default MainPage
+export default MainPage;

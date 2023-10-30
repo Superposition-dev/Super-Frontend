@@ -1,16 +1,7 @@
 import styled from '@emotion/styled';
-
+import theme from '../../../styles/theme';
 export const Layout = styled.div`
-  @media (min-width: 810px) {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
-
-  @media (min-width: 1200px) {
-    display: grid;
-    grid-template-columns: 360px auto;
-    justify-content: center;
-  }
+  position: relative;
 `;
 
 export const Main = styled.div`
@@ -19,12 +10,11 @@ export const Main = styled.div`
   position: relative;
   overflow-y: scroll;
   margin: 0 auto;
-  width: 360px;
-  height: 100vh;
-  background-image: url('/images/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(180deg, ${theme.colors.black} 70%, ${theme.colors.purple});
+  background-attachment: fixed;
+  padding-bottom: 3rem;
   &::-webkit-scrollbar {
     display: none;
   }
