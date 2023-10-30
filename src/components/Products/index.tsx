@@ -22,7 +22,7 @@ function Products() {
   return (
     <S.Container>
       <S.Title>ARTWORK</S.Title>
-      <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 3 : 4}>
+      <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 4 : 5}>
         {isLoading ? (
           // 로딩 중일 때 Skeleton 컴포넌트를 표시
           <Skeleton />
