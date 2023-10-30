@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Layout = styled.div`
   @media (min-width: 810px) {
@@ -21,7 +21,7 @@ export const Main = styled.div`
   margin: 0 auto;
   width: 360px;
   height: 100vh;
-  background-image: url('/background.png');
+  background-image: url('/images/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
