@@ -1,7 +1,7 @@
 import React from 'react';
-
+import * as S from './styles';
 function Main() {
-  return <div style={{ height: 'calc(100vh - 48px)' }}>Main</div>;
+  return <S.Container>Main</S.Container>;
 }
 
 export default Main;
