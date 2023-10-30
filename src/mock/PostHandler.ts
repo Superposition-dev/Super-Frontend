@@ -1,10 +1,10 @@
 import { rest } from 'msw';
-import { PostsData } from './constants/PostsData';
+import PostsData from './constants/PostsData.json';
 
 export const PostHandler = [
   // 모든 작품 조회
   rest.get('/products', (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({ PostsData }));
+    return res(ctx.status(200), ctx.json(PostsData));
   }),
 
   // 작품 상세 조회

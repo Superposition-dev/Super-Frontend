@@ -2,7 +2,6 @@ import * as S from './styles';
 /*eslint-disable */
 function ProductItem({ item }: any) {
   const { picture, name, title, tag } = item;
-  console.log(tag);
   return (
     <S.ProductItem>
       <S.Image src={picture} alt={'test'} />

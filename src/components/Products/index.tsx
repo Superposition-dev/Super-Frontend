@@ -28,7 +28,7 @@ function Products() {
           <Skeleton />
         ) : (
           // 데이터가 로딩되고 나면 제품 목록을 렌더링
-          data?.map((item) => <ProductItem item={item} key={item.productid} />)
+          productsMemo?.map((item) => <ProductItem item={item} key={item.productid} />)
         )}
       </MasonryGrid>
     </S.Container>
