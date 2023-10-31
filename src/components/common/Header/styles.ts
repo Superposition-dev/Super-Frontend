@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import theme from '../../../styles/theme';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   box-sizing: border-box;
@@ -19,7 +19,7 @@ export const Header = styled.header`
   }
 `;
 
-export const LogoWrap = styled.div`
+export const LogoWrap = styled(NavLink)`
   height: 2.2rem;
   @media (max-width: 420px) {
     height: 1.6rem;
