@@ -15,7 +15,6 @@ export const Main = styled.div`
   height: auto;
   background: linear-gradient(180deg, ${theme.colors.black} 70%, ${theme.colors.purple});
   background-attachment: fixed;
-  padding-bottom: 3rem;
   &::-webkit-scrollbar {
     display: none;
   }
