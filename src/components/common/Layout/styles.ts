@@ -11,10 +11,10 @@ export const Main = styled.div`
   overflow-y: scroll;
   margin: 0 auto;
   width: 100%;
+  min-height: calc(100vh - 4.8rem);
   height: auto;
   background: linear-gradient(180deg, ${theme.colors.black} 70%, ${theme.colors.purple});
   background-attachment: fixed;
-  padding-bottom: 3rem;
   &::-webkit-scrollbar {
     display: none;
   }

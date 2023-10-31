@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import theme from '../../../styles/theme';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   box-sizing: border-box;
@@ -8,15 +8,18 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 4rem;
   height: 4.8rem;
   background-color: ${theme.colors.black};
   position: sticky;
   top: 0;
   z-index: 999;
+  @media (max-width: 420px) {
+    padding: 0 1rem;
+  }
 `;
 
-export const LogoWrap = styled.div`
+export const LogoWrap = styled(NavLink)`
   height: 2.2rem;
   @media (max-width: 420px) {
     height: 1.6rem;

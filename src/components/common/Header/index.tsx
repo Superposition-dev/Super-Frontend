@@ -3,8 +3,8 @@ import * as S from './styles';
 function Header() {
   return (
     <S.Header>
-      <S.LogoWrap>
-        <S.Logo src="/images/logo.png" alt="logo" />
+      <S.LogoWrap to="/">
+        <S.Logo src="/images/purpleLogo.png" alt="logo" />
       </S.LogoWrap>
       <S.Nav>
         <S.NavItem to="/" color="gray">

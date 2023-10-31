@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import theme from '../../../styles/theme';
 
 export const ProductItem = styled.div`
-  width: calc(25% - 1.6rem);
+  width: calc(20% - 1.6rem);
   @media (max-width: 420px) {
     width: calc(50% - 1.6rem);
   }

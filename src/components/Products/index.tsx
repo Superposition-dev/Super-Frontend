@@ -10,7 +10,7 @@ import { useIsMobile, useIsTablet } from '../hooks/mediaQuery';
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const { data, isLoading, isSuccess } = useQuery('products', getPosts, {
+  const { isLoading } = useQuery('products', getPosts, {
     onSuccess: (data) => {
       setProducts(data);
       console.log(data);
@@ -22,13 +22,13 @@ function Products() {
   return (
     <S.Container>
       <S.Title>ARTWORK</S.Title>
-      <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 3 : 4}>
+      <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 4 : 5}>
         {isLoading ? (
           // 로딩 중일 때 Skeleton 컴포넌트를 표시
           <Skeleton />
         ) : (
           // 데이터가 로딩되고 나면 제품 목록을 렌더링
-          productsMemo?.map((item) => <ProductItem item={item} key={item.productid} />)
+          productsMemo?.map((item, value) => <ProductItem item={item} key={value * 20} />)
         )}
       </MasonryGrid>
     </S.Container>
