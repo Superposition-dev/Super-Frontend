@@ -7,6 +7,7 @@ function Layout() {
   return (
     <S.Layout>
       <Header />
+      <S.Background />
       <S.Main>
         <Outlet />
       </S.Main>

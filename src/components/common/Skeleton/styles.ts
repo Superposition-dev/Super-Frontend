@@ -12,7 +12,7 @@ const SkeletonAni = keyframes`
 `;
 
 export const SkeletonItem = styled.div<{ size: string }>`
-  width: calc(50% - 1.6rem);
+  width: calc(20% - 1.6rem);
   height: ${(props) => (props.size === 'shorts' ? '18rem' : props.size === 'middle' ? '24rem' : '30rem')};
   background-color: rgba(255, 255, 255, 0.1);
   background-image: linear-gradient(
@@ -25,4 +25,7 @@ export const SkeletonItem = styled.div<{ size: string }>`
   background-repeat: no-repeat;
   border-radius: 0.5rem;
   animation: ${SkeletonAni} 1.2s ease-in-out infinite;
+  @media (max-width: 420px) {
+    width: calc(50% - 1.6rem);
+  }
 `;
