@@ -39,9 +39,11 @@ export const Nav = styled.div`
   gap: 2rem;
 `;
 
-export const NavItem = styled(Link)<{ color?: string }>`
+export const NavItem = styled(Link)<{ active: string }>`
   cursor: pointer;
   ${theme.font.mobile.r14};
-  color: ${(props) => (props.color === 'gray' ? theme.colors.gray : theme.colors.white)};
+  color: ${(props) => (props.active === 'true' ? theme.colors.white : theme.colors.gray)};
   text-decoration: none;
+  border-bottom: ${(props) => (props.active === 'true' ? '2px solid #fff' : 'none')};
+  padding-bottom: 0.2rem;
 `;
