@@ -9,6 +9,11 @@ function Skeleton() {
       <S.SkeletonItem size="long" />
       <S.SkeletonItem size="middle" />
       <S.SkeletonItem size="shorts" />
+      <S.SkeletonItem size="middle" />
+      <S.SkeletonItem size="shorts" />
+      <S.SkeletonItem size="long" />
+      <S.SkeletonItem size="middle" />
+      <S.SkeletonItem size="shorts" />
     </>
   );
 }

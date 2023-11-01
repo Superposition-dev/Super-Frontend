@@ -1,9 +1,19 @@
 import styled from '@emotion/styled';
-import theme from '../../../styles/theme';
 export const Layout = styled.div`
   position: relative;
 `;
-
+export const Background = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  filter: grayscale(100%);
+  top: 0;
+  left: 0;
+`;
 export const Main = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -11,14 +21,8 @@ export const Main = styled.div`
   overflow-y: scroll;
   margin: 0 auto;
   width: 100%;
+  min-height: calc(100vh - 4.8rem);
   height: auto;
-  background: linear-gradient(180deg, ${theme.colors.black} 70%, ${theme.colors.purple});
-  background-attachment: fixed;
-  padding-bottom: 3rem;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   @media (max-width: 420px) {
     //모바일 대응
     width: 100vw;
