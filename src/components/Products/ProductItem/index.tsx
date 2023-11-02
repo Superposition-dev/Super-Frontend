@@ -3,7 +3,7 @@ import * as S from './styles';
 function ProductItem({ item }: any) {
   const { picture, name, title, tag } = item;
   return (
-    <S.ProductItem>
+    <>
       <S.Image src={picture} alt={'test'} />
       <S.TagList>
         {tag &&
@@ -13,7 +13,7 @@ function ProductItem({ item }: any) {
       </S.TagList>
       <S.ItemTitle>{title}</S.ItemTitle>
       <S.Artist>{name}</S.Artist>
-    </S.ProductItem>
+    </>
   );
 }
 

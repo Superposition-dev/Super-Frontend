@@ -5,8 +5,8 @@ export const getPosts = async () => {
   return res.data;
 };
 
-export const getPost = async (id: number, qr?: string) => {
-  const res = await axiosInstance.get(`/products/${id}?qr=${qr}`);
+export const getPost = async (id: number, qr: boolean) => {
+  const res = await axiosInstance.get(`/products/${id}?qr=${qr === null ? true : qr}`);
   return res.data;
 };
 

@@ -8,6 +8,7 @@ function Layout() {
     <S.Layout>
       <Header />
       <S.Background />
+      <S.Cover />
       <S.Main>
         <Outlet />
       </S.Main>

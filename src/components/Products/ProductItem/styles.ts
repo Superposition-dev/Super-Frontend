@@ -1,15 +1,5 @@
 import styled from '@emotion/styled';
 import theme from '../../../styles/theme';
-
-export const ProductItem = styled.div`
-  cursor: pointer;
-  width: calc(20% - 1.6rem);
-  height: auto;
-  @media (max-width: 420px) {
-    width: calc(50% - 1.6rem);
-  }
-`;
-
 export const Image = styled.img`
   width: 100%;
   border-radius: 0.5rem;
@@ -24,12 +14,13 @@ export const TagList = styled.ul`
 
 export const Tag = styled.li`
   color: ${theme.colors.gray};
+  ${theme.font.mobile.r16};
 `;
 
 export const ItemTitle = styled.h2`
-  ${theme.font.mobile.r14};
+  ${theme.font.mobile.r18};
+  line-height: 1.5;
   color: ${theme.colors.white};
-  margin-top: 0.5rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

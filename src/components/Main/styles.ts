@@ -52,7 +52,7 @@ export const SubTitle = styled.h2`
   ${theme.font.mobile.r30};
   color: ${theme.colors.white};
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
 `;
 
 export const BallWrap = styled.div`
@@ -119,8 +119,8 @@ export const DashedBall = styled.div`
 
 export const Ball = styled.div`
   box-sizing: border-box;
-  width: 13.5rem;
-  height: 13.5rem;
+  width: 12.5rem;
+  height: 12.5rem;
   border-radius: 50%;
   border: 1px solid ${theme.colors.white};
   background-color: ${theme.colors.black};
@@ -140,7 +140,7 @@ export const SNS = styled.div`
   justify-content: center;
   margin-top: 4rem;
   gap: 1rem;
-  transform: translateX(-1.2rem);
+  transform: translateX(-0.2rem);
 `;
 
 export const Instagram = styled.img``;
