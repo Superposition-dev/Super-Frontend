@@ -14,6 +14,16 @@ export const Background = styled.div`
   top: 0;
   left: 0;
 `;
+
+export const Cover = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  top: 0;
+  left: 0;
+`;
+
 export const Main = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
