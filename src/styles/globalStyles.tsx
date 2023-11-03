@@ -6,6 +6,9 @@ const style = css`
     font-weight: 400;
     font-family: 'Pretendard-Regular', sans-serif;
     color: #45537c;
+    @media (max-width: 1024px) {
+      font-size: 14px;
+    }
     @media (max-width: 768px) {
       font-size: 10px;
     }
