@@ -10,11 +10,13 @@ export const TagList = styled.ul`
   justify-content: flex-start;
   margin-top: 0.5rem;
   gap: 0.2rem;
+  flex-wrap: wrap;
 `;
 
 export const Tag = styled.li`
   color: ${theme.colors.gray};
-  ${theme.font.mobile.r16};
+  ${theme.font.mobile.r14};
+  word-wrap: break-word;
 `;
 
 export const ItemTitle = styled.h2`
