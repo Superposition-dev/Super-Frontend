@@ -5,8 +5,18 @@ export const Tool = styled.div`
   background-color: ${theme.colors.black};
 `;
 
+export const ImageWrap = styled.div`
+  width: 100%;
+  min-height: 35rem;
+  background-color: ${theme.colors.black};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const StyledImage = styled.img`
   width: 100%;
+  min-height: 35rem;
 `;
 
 export const Writing = styled.p`
@@ -47,10 +57,7 @@ export const icons = styled.div`
 export const Name = styled.p`
   text-align: right;
   color: #fefefe;
-  font-size: 2rem;
-  font-family: Pretendard;
-  font-weight: 700;
-  line-height: 2.4rem;
+  ${theme.font.mobile.b20};
   word-wrap: break-word;
 `;
 
@@ -61,7 +68,7 @@ export const Num = styled.p`
 `;
 
 export const InfoWrap = styled.div`
-  padding: 1.2rem;
+  padding: 1.5rem;
 `;
 
 export const Tags = styled.div`
@@ -82,17 +89,14 @@ export const One = styled.div`
 
 export const InfoTitle = styled.p`
   color: #797979;
-  ${theme.font.mobile.r14};
+  ${theme.font.mobile.r16};
   word-wrap: break-word;
   width: 25%;
 `;
 
 export const Atname = styled.p`
   color: #fefefe;
-  font-size: 1.3rem;
-  font-family: Pretendard;
-  font-weight: 400;
-  line-height: 2rem;
+  ${theme.font.mobile.r16};
   word-wrap: break-word;
 `;
 
@@ -103,28 +107,19 @@ export const Two = styled.div`
 
 export const Work = styled.p`
   color: #797979;
-  font-size: 1.3rem;
-  font-family: Pretendard;
-  font-weight: 400;
-  line-height: 2rem;
+  ${theme.font.mobile.r16};
   word-wrap: break-word;
 `;
 
 export const Cen = styled.p`
   color: #fefefe;
-  font-size: 1.3rem;
-  font-family: Pretendard;
-  font-weight: 400;
-  line-height: 2rem;
+  ${theme.font.mobile.r16};
   word-wrap: break-word;
 `;
 
 export const Year = styled.p`
   color: #fefefe;
-  font-size: 1.3rem;
-  font-family: Pretendard;
-  font-weight: 400;
-  line-height: 2rem;
+  ${theme.font.mobile.r14};
   word-wrap: break-word;
 `;
 
@@ -136,19 +131,13 @@ export const Three = styled.div`
 
 export const Ex = styled.p`
   color: #797979;
-  font-size: 1.3rem;
-  font-family: Pretendard;
-  font-weight: 400;
-  line-height: 2rem;
+  ${theme.font.mobile.r16};
 `;
 
 export const Artwork = styled.p`
   width: 70%;
   color: #fefefe;
-  font-size: 1.3rem;
-  font-family: Pretendard;
-  font-weight: 400;
-  line-height: 2rem;
+  ${theme.font.mobile.r16};
 `;
 
 export const Price = styled.p`
@@ -158,8 +147,8 @@ export const Price = styled.p`
   font-weight: 700;
   line-height: 2.4rem;
   word-wrap: break-word;
-  margin-top: 3rem;
-  margin-bottom: 9rem;
+  margin-top: 4rem;
+  margin-bottom: 8rem;
 `;
 
 export const Btn = styled.button`

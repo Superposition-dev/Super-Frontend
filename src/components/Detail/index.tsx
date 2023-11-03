@@ -2,7 +2,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import * as S from './styles';
 import { useQuery } from 'react-query';
 import { getPost } from '../../api/postsAPI';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+
 export default function Detail() {
   const [products, setProducts] = useState([]); // [1
   const { id } = useParams();
@@ -20,10 +21,12 @@ export default function Detail() {
     <S.Tool>
       {products[0] && (
         <>
-          <S.StyledImage src={products[0].picture} alt="작품 이미지" />
+          <S.ImageWrap>
+            <S.StyledImage src={products[0].picture} alt="작품 이미지" />
+          </S.ImageWrap>
           <S.Writing>
             무단 도용 및 재배포를 금지합니다.
-            <br />@ 2023. 김예지. All rights reserved.
+            <br />@ 2023.{`${products[0].name}`}. All rights reserved.
           </S.Writing>
           <S.InfoWrap>
             <S.Tools>
