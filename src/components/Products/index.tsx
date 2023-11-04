@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import { getPosts } from '../../api/postsAPI';
 import Skeleton from '../common/Skeleton';
 import { useIsMobile, useIsTablet } from '../../hooks/mediaQuery';
+import { Product } from '../../interface/products';
 /*eslint-disable*/
 
 function Products() {
@@ -29,7 +30,7 @@ function Products() {
           <Skeleton />
         ) : (
           // 데이터가 로딩되고 나면 제품 목록을 렌더링
-          productsMemo?.map((item, value) => (
+          productsMemo?.map((item:Product, value) => (
             <S.ProductItem key={value * 20} to={`/products/${item.productId}?qr=false`}>
               <ProductItem item={item} />
             </S.ProductItem>
