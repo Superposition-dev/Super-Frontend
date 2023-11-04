@@ -1,8 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
-
 const getAxiosInstance = (ContentType: string) => {
   const config: AxiosRequestConfig = {
-    baseURL: 'http://localhost:3000',
+    baseURL: import.meta.env.VITE_BASE_URL,
     headers: {
       'Content-Type': ContentType,
     },
