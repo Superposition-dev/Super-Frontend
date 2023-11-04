@@ -1,56 +1,92 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation,useParams } from 'react-router-dom';
 import * as S from './styles';
-import { useQuery } from 'react-query';
-import { getPost } from '../../api/postsAPI';
+import { useMutation, useQuery } from 'react-query';
+import { getPost, likePost } from '../../api/postsAPI';
 import { useState } from 'react';
+import { patchGoogle, patchInsta } from '../../api/logAPI';
+import { checkLog, toggleLike } from '../../util/localstorage';
+import { Product } from '../../interface/products';
+
 
 export default function Detail() {
-  const [products, setProducts] = useState([]); // [1
+  const [products, setProducts] = useState<Product>(null!);
   const { id } = useParams();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const qr = query.get('qr');
-  const { data } = useQuery('products', () => getPost(id, qr), {
+  const likedPosts = JSON.parse(String(localStorage.getItem('likedPosts'))) || [];
+  const isLiked = products&& likedPosts.includes(products.productId);
+
+  useQuery(`product`, () => getPost(Number(id), !!qr), {
     onSuccess: (data) => {
       console.log(data);
-      setProducts(data.product);
+      setProducts(data);
     },
   });
-  const number = products[0] && String(products[0].productId).padStart(3, '0');
+  const {mutate:likeMutate} = useMutation(likePost)
+
+  const {mutate:instarMutate} = useMutation(patchInsta)
+
+  const {mutate:buyMutate} = useMutation(patchGoogle)
+
+
+  const onInstarClick = (id:number,url:string) => {
+    checkLog('insta',id) === true
+    ? window.open(url, '_blank') 
+    :
+    instarMutate(id)  
+
+
+    window.open(url, '_blank');
+  }
+
+  const onBuyClick = (id:number) => {
+    checkLog('buy',id) === true
+    ? window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank')
+    :
+    buyMutate(id)
+    window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank');
+  }
+
+  const onLikeClick = async (id:number) => {
+    const like = await toggleLike(id)
+    likeMutate({id,like})
+  }
+
   return (
     <S.Tool>
-      {products[0] && (
+      {products && (
         <>
           <S.ImageWrap>
-            <S.StyledImage src={products[0].picture} alt="작품 이미지" />
+            <S.StyledImage src={products.picture} alt="작품 이미지" />
           </S.ImageWrap>
           <S.Writing>
             무단 도용 및 재배포를 금지합니다.
-            <br />@ 2023.{`${products[0].name}`}. All rights reserved.
+            <br />@ 2023.{`${products.artist}`}. All rights reserved.
           </S.Writing>
           <S.InfoWrap>
             <S.Tools>
               <div style={{ marginBottom: '1rem' }}>
                 <S.Anrdma>
-                  <S.Name>{products[0].title}</S.Name>
-                  <S.Num>{`No.Sup${number}`}</S.Num>
+                  <S.Name>{products.title}</S.Name>
+                  <S.Num>{`No.Sup${String(products.productId).padStart(3, '0')}`}</S.Num>
                 </S.Anrdma>
                 <S.Tags>
-                  {products[0].tag &&
-                    products[0].tag.map((item: string) => {
+                  {products.tag &&
+                    products.tag.map((item: string) => {
                       return <S.Tag key={item}>#{item}</S.Tag>;
                     })}
                 </S.Tags>
               </div>
               <S.icons>
-                <S.Function src="/icons/instagram.svg" alt="인스타그램" />
-                <S.Function src="/icons/emptLike.svg" alt="좋아요 하트" />
+                <S.Function onClick={()=>onInstarClick(products.productId,products.instar)} src="/icons/instagram.svg" alt="인스타그램" />
+                <S.Function onClick={()=>onLikeClick(products.productId)} src={isLiked?"/icons/fillLike.svg":"/icons/emptLike.svg"} alt="좋아요 하트" />
               </S.icons>
             </S.Tools>
             <div>
               <S.One>
                 <S.InfoTitle>작가</S.InfoTitle>
-                <S.Atname>{products[0].name}</S.Atname>
+                <S.Atname>{products.artist}</S.Atname>
               </S.One>
               <S.Two>
                 <S.InfoTitle>작품 정보</S.InfoTitle>
@@ -62,11 +98,11 @@ export default function Detail() {
               </S.Two>
               <S.Three>
                 <S.InfoTitle>작품 설명</S.InfoTitle>
-                <S.Artwork>{products[0].description}</S.Artwork>
+                <S.Artwork>{products.description}</S.Artwork>
               </S.Three>
             </div>
-            <S.Price>\ 1,000,000 원</S.Price>
-            <S.Btn>구매하기</S.Btn>
+            <S.Price>\ {`${String(products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}원</S.Price>
+            <S.Btn onClick={()=>onBuyClick(products.productId)}>구매하기</S.Btn>
           </S.InfoWrap>
         </>
       )}
