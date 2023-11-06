@@ -2,12 +2,11 @@ import { axiosInstance } from './axios';
 
 export const getPosts = async () => {
   const res = await axiosInstance.get('/products');
-  console.log(res.data)
   return res.data;
 };
 
-export const getPost = async (id: number, qr: boolean) => {
-  const res = await axiosInstance.get(`/products/${id}?qr=${qr === null ? true : qr}`);
+export const getPost = async (id: number, qr: string) => {
+  const res = await axiosInstance.get(`/products/${id}?isQr=${qr === "false" ? false : true}`);
   return res.data;
 };
 
