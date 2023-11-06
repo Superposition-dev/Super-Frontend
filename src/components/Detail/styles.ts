@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import theme from '../../styles/theme';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 export const Tool = styled.div`
   background-color: ${theme.colors.black};
@@ -28,12 +29,6 @@ export const Writing = styled.p`
   word-wrap: break-word;
   text-align: center;
   margin-top: 1rem;
-`;
-
-export const Function = styled.img`
-  width: 2.4rem;
-  height: 2.4rem;
-  cursor: pointer;
 `;
 
 export const Tools = styled.ul`
@@ -156,12 +151,40 @@ export const Btn = styled.button`
   background-color: #6e28ac;
   color: #fefefe;
   width: 100%;
-  height: 6.5rem;
+  height: 5.5rem;
   font-weight: 700;
   font-size: 2rem;
   margin-top: 15rem;
   border: none;
   position: fixed;
+  -webkit-overflow-scrolling: touch;
   bottom: 0;
   left: 0;
+`;
+
+export const Function = styled.img`
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+`;
+
+export const HeartWrap = styled.div`
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EmptHeart = styled(FaRegHeart)`
+  font-size: 2.4rem;
+  text-align: center;
+  color: #fefefe;
+`;
+
+export const FillHeart = styled(FaHeart)`
+  font-size: 2.4rem;
+  color: #ff0000;
+  text-align: center;
 `;
