@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import theme from '../../styles/theme';
 
 export const Container = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,7 @@ export const Container = styled.div`
 
 export const Background = styled.div`
   width: 100%;
+  height: 100vh;
   top: 0;
   position: absolute;
   background-image: url('/images/background.jpg');
@@ -24,6 +26,7 @@ export const Background = styled.div`
 export const Cover = styled.div`
   position: absolute;
   width: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: -1;
 `;

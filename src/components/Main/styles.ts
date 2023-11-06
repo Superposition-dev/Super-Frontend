@@ -141,7 +141,7 @@ export const Ball = styled.div`
 export const SNS = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin: 4rem 0 2rem;
   gap: 1rem;
   transform: translateX(-0.2rem);
 `;
@@ -150,7 +150,7 @@ export const Instagram = styled.img``;
 
 export const SNSLinks = styled.div`
   display: flex;
-  gap: 0.2rem;
+  gap: 1.2rem;
   a:nth-of-type(1) {
     background-color: ${theme.colors.purple};
   }

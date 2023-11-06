@@ -8,16 +8,19 @@ export const Tool = styled.div`
 
 export const ImageWrap = styled.div`
   width: 100%;
-  min-height: 35rem;
+  min-height: 50rem;
   background-color: ${theme.colors.black};
   display: flex;
   align-items: center;
   justify-content: center;
+
 `;
 
 export const StyledImage = styled.img`
   width: 100%;
-  min-height: 35rem;
+  @media (min-width: 429px ) and (max-width: 1024px) {
+    width: 60%;
+  }
 `;
 
 export const Writing = styled.p`

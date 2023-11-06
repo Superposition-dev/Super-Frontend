@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
   const mobile = useMediaQuery({
-    query: '(max-width: 767px)',
+    query: '(max-width: 428px)',
   });
   useEffect(() => {
     setIsMobile(mobile);
@@ -15,7 +15,7 @@ export function useIsMobile() {
 export function useIsTablet() {
   const [isTablet, setIsTablet] = useState(false);
   const tablet = useMediaQuery({
-    query: '(min-width: 768px) and (max-width: 1024px)',
+    query: '(min-width: 429px) and (max-width: 1024px)',
   });
   useEffect(() => {
     setIsTablet(tablet);

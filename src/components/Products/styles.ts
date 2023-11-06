@@ -53,10 +53,12 @@ export const SearchInput = styled.input`
 `;
 
 export const Button = styled.button`
+
   position: absolute;
-  right: 2rem;
+  right: 2.4rem;
   border: none;
   background-color: transparent;
+  ${theme.font.mobile.r14}
   font-weight: 700;
   cursor: pointer;
   color: ${theme.colors.black};
@@ -68,6 +70,9 @@ export const ProductItem = styled(Link)`
   cursor: pointer;
   width: calc(20% - 1.6rem);
   height: auto;
+  @media (max-width: 1024px) {
+    width: calc(25% - 1.6rem);
+  };
   @media (max-width: 428px) {
     width: calc(50% - 1.6rem);
   }
