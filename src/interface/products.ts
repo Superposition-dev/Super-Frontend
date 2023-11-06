@@ -1,14 +1,15 @@
-export type products = {
-  products: product[];
+export type Products = {
+  products: Product[];
 };
 
-export type product = {
+
+export type Product = {
   productId: number;
-  profilImg: string;
-  name: string;
-  picture: string;
   title: string;
-  likes: number;
-  views: number;
+  artist: string;
+  description: string;
+  picture: string;
+  price: number;
   tag: string[];
-};
+  instar: string;
+}
