@@ -9,7 +9,6 @@ export const getPost = async (id: number, qr: string) => {
 
 export const getPosts = async (filter: string | null | undefined) => {
   const res = await axiosInstance.get(filter ? `/products?filter=${filter}` : '/products');
-  console.log(res.data);
   return res.data;
 };
 
