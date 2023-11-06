@@ -4,13 +4,14 @@ export function toggleLike(postId: number) {
 
   // 게시물이 이미 좋아요를 누른 상태인지 확인
   const isLiked = likedPosts.includes(postId);
-  console.log(likedPosts,postId,isLiked)
   if (isLiked) {
     // 이미 좋아요를 누른 경우, 좋아요 상태를 해제하고 로컬 스토리지에서 제거
     likedPosts.splice(likedPosts.indexOf(postId), 1);
+    console.log('좋아요 취소');
   } else {
     // 아직 좋아요를 누르지 않은 경우, 좋아요 상태를 추가하고 로컬 스토리지에 저장
     likedPosts.push(postId);
+    console.log('좋아요');
   }
   // 로컬 스토리지에 업데이트된 좋아요 상태 저장
   localStorage.setItem('likedPosts', JSON.stringify(likedPosts));

@@ -15,7 +15,6 @@ function Products() {
   const tablet = useIsTablet();
   const { isLoading } = useQuery('products', getPosts, {
     onSuccess: (data) => {
-      console.log(data);
       setProducts(data);
     },
   });
