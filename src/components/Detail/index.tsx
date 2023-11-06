@@ -2,8 +2,8 @@ import { useLocation,useParams } from 'react-router-dom';
 import * as S from './styles';
 import { useMutation, useQuery } from 'react-query';
 import { getPost, likePost } from '../../api/postsAPI';
-import { useState } from 'react';
-import { patchGoogle, patchInsta } from '../../api/logAPI';
+import { useState,useEffect } from 'react';
+import { patchGoogle, patchInsta, patchView } from '../../api/logAPI';
 import { checkLog, toggleLike } from '../../util/localstorage';
 import { Product } from '../../interface/products';
 
@@ -17,18 +17,30 @@ export default function Detail() {
   const likedPosts = JSON.parse(String(localStorage.getItem('likedPosts'))) || [];
   const isLiked = products&& likedPosts.includes(products.productId);
 
-  useQuery(`product`, () => getPost(Number(id), !!qr), {
+  useQuery(`product`, () => getPost(Number(id), qr as string), {
     onSuccess: (data) => {
-      console.log(data);
       setProducts(data);
     },
   });
   const {mutate:likeMutate} = useMutation(likePost)
 
-  const {mutate:instarMutate} = useMutation(patchInsta)
+  const {mutate:instarMutate} = useMutation(patchInsta,{
+    onSuccess:()=>{
+      console.log('인스타 1회')
+    }
+  })
 
-  const {mutate:buyMutate} = useMutation(patchGoogle)
+  const {mutate:buyMutate} = useMutation(patchGoogle,{
+    onSuccess:()=>{
+      console.log('구글 1회')
+    }
+  })
 
+  const {mutate:viewMutate} = useMutation(patchView,{
+    onSuccess:()=>{
+      console.log('뷰 1회')
+    }
+  })
 
   const onInstarClick = (id:number,url:string) => {
     checkLog('insta',id) === true
@@ -52,6 +64,19 @@ export default function Detail() {
     const like = await toggleLike(id)
     likeMutate({id,like})
   }
+
+  const onView = (id:number) => {
+    checkLog('view',id) === true
+    ? console.log('이미 봄')
+    :
+    viewMutate(id)
+  }
+
+  useEffect(()=>{
+    if(!products) return
+    onView(products&&products.productId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[products])
 
   return (
     <S.Tool>
