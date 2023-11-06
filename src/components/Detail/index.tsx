@@ -41,12 +41,6 @@ export default function Detail() {
     }
   })
 
-  const onInstarClick = (id:number,url:string) => {
-    checkLog('insta',id) === true
-    ? window.open(url, '_blank') 
-    :
-    instarMutate(id)  
-
   const onInstarClick = (id: number, url: string) => {
     checkLog('insta', id) === true ? window.open(url, '_blank') : instarMutate(id);
 
