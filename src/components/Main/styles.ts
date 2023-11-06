@@ -4,10 +4,11 @@ import theme from '../../styles/theme';
 export const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: calc(100vh - 6rem);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const Layout = styled.div`
@@ -33,13 +34,13 @@ export const TitleWrap = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  width: 26rem;
+  width: 24rem;
   height: auto;
   margin-top: 1rem;
 `;
 
 export const TextWrap = styled.div`
-  ${theme.font.mobile.b20};
+  ${theme.font.mobile.r18};
   color: ${theme.colors.white};
   text-align: center;
   margin-top: 4rem;
@@ -58,6 +59,8 @@ export const SubTitle = styled.h2`
 export const BallWrap = styled.div`
   box-sizing: border-box;
   width: 40rem;
+  display: -ms-grid;
+  display: -webkit-grid;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
@@ -71,7 +74,7 @@ export const BallWrap = styled.div`
   bottom: 0;
   margin: auto;
   gap: 8rem;
-  @media (max-width: 420px) {
+  @media (max-width: 428px) {
     gap: 0;
     width: 100%;
     grid-template-columns: repeat(3, 0.5fr);
@@ -95,14 +98,14 @@ export const BallWrap = styled.div`
 export const BallContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 40rem;
+  height: 30rem;
   margin-top: 1rem;
 `;
 
 export const DashedBall = styled.div`
   display: none;
-  width: 20rem;
-  height: 20rem;
+  width: 16rem;
+  height: 16rem;
   border-radius: 50%;
   border: 1px dashed ${theme.colors.white};
   position: absolute;
@@ -112,15 +115,15 @@ export const DashedBall = styled.div`
   right: 0;
   margin: auto;
   z-index: 1;
-  @media (max-width: 420px) {
+  @media (max-width: 428px) {
     display: block;
   }
 `;
 
 export const Ball = styled.div`
   box-sizing: border-box;
-  width: 12.5rem;
-  height: 12.5rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   border: 1px solid ${theme.colors.white};
   background-color: ${theme.colors.black};
@@ -128,7 +131,7 @@ export const Ball = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${theme.font.mobile.b20};
+  ${theme.font.mobile.b12};
   font-weight: bold;
   text-align: center;
   word-break: keep-all;

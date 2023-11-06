@@ -1,4 +1,4 @@
-import { useLocation,useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import * as S from './styles';
 import { useMutation, useQuery } from 'react-query';
 import { getPost, likePost } from '../../api/postsAPI';
@@ -7,7 +7,6 @@ import { patchGoogle, patchInsta, patchView } from '../../api/logAPI';
 import { checkLog, toggleLike } from '../../util/localstorage';
 import { Product } from '../../interface/products';
 
-
 export default function Detail() {
   const [products, setProducts] = useState<Product>(null!);
   const { id } = useParams();
@@ -15,14 +14,14 @@ export default function Detail() {
   const query = new URLSearchParams(location.search);
   const qr = query.get('qr');
   const likedPosts = JSON.parse(String(localStorage.getItem('likedPosts'))) || [];
-  const isLiked = products&& likedPosts.includes(products.productId);
+  const isLiked = products && likedPosts.includes(products.productId);
 
   useQuery(`product`, () => getPost(Number(id), qr as string), {
     onSuccess: (data) => {
       setProducts(data);
     },
   });
-  const {mutate:likeMutate} = useMutation(likePost)
+  const { mutate: likeMutate } = useMutation(likePost);
 
   const {mutate:instarMutate} = useMutation(patchInsta,{
     onSuccess:()=>{
@@ -48,22 +47,23 @@ export default function Detail() {
     :
     instarMutate(id)  
 
+  const onInstarClick = (id: number, url: string) => {
+    checkLog('insta', id) === true ? window.open(url, '_blank') : instarMutate(id);
 
     window.open(url, '_blank');
-  }
+  };
 
-  const onBuyClick = (id:number) => {
-    checkLog('buy',id) === true
-    ? window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank')
-    :
-    buyMutate(id)
+  const onBuyClick = (id: number) => {
+    checkLog('buy', id) === true
+      ? window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank')
+      : buyMutate(id);
     window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank');
-  }
+  };
 
-  const onLikeClick = async (id:number) => {
-    const like = await toggleLike(id)
-    likeMutate({id,like})
-  }
+  const onLikeClick = async (id: number) => {
+    const like = await toggleLike(id);
+    likeMutate({ id, like });
+  };
 
   const onView = (id:number) => {
     checkLog('view',id) === true
@@ -104,8 +104,14 @@ export default function Detail() {
                 </S.Tags>
               </div>
               <S.icons>
-                <S.Function onClick={()=>onInstarClick(products.productId,products.instar)} src="/icons/instagram.svg" alt="인스타그램" />
-                <S.Function onClick={()=>onLikeClick(products.productId)} src={isLiked?"/icons/fillLike.svg":"/icons/emptLike.svg"} alt="좋아요 하트" />
+                <S.Function
+                  onClick={() => onInstarClick(products.productId, products.instar)}
+                  src="/icons/instagram.svg"
+                  alt="인스타그램"
+                />
+                <S.HeartWrap onClick={() => onLikeClick(products.productId)}>
+                  {isLiked ? <S.FillHeart /> : <S.EmptHeart />}
+                </S.HeartWrap>
               </S.icons>
             </S.Tools>
             <div>
@@ -127,7 +133,7 @@ export default function Detail() {
               </S.Three>
             </div>
             <S.Price>\ {`${String(products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}원</S.Price>
-            <S.Btn onClick={()=>onBuyClick(products.productId)}>구매하기</S.Btn>
+            <S.Btn onClick={() => onBuyClick(products.productId)}>구매하기</S.Btn>
           </S.InfoWrap>
         </>
       )}

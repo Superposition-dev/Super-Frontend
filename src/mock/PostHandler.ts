@@ -17,7 +17,7 @@ export const PostHandler = [
       return res(ctx.status(404), ctx.json({ message: '작품이 존재하지 않습니다.' }));
     }
     if (qr === 'true') {
-      return res(ctx.status(200), ctx.json({ product, message: 'QR코드가 인증되었습니다.' }));
+      return res(ctx.status(200), ctx.json({ product: product[0], message: 'QR코드가 인증되었습니다.' }));
     }
     return res(ctx.status(200), ctx.json({ product }));
   }),

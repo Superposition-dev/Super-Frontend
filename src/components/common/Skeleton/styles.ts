@@ -25,7 +25,7 @@ export const SkeletonItem = styled.div<{ size: string }>`
   background-repeat: no-repeat;
   border-radius: 0.5rem;
   animation: ${SkeletonAni} 1.2s ease-in-out infinite;
-  @media (max-width: 420px) {
+  @media (max-width: 428px) {
     width: calc(50% - 1.6rem);
   }
 `;

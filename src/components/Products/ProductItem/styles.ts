@@ -14,7 +14,7 @@ export const TagList = styled.ul`
 `;
 
 export const Tag = styled.li`
-  color: ${theme.colors.gray};
+  color: rgba(255, 255, 255, 0.6);
   ${theme.font.mobile.r14};
   word-wrap: break-word;
 `;
@@ -30,6 +30,6 @@ export const ItemTitle = styled.h2`
 
 export const Artist = styled.h3`
   ${theme.font.mobile.r14};
-  color: ${theme.colors.lightGray};
+  color: rgba(255, 255, 255, 0.9);
   margin-top: 0.2rem;
 `;
