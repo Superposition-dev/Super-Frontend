@@ -10,6 +10,7 @@ export const Background = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   position: fixed;
+  -webkit-overflow-scrolling: touch;
   filter: grayscale(100%);
   top: 0;
   left: 0;
@@ -18,8 +19,9 @@ export const Background = styled.div`
 export const Cover = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
+  -webkit-overflow-scrolling: touch;
   top: 0;
   left: 0;
 `;
@@ -28,18 +30,9 @@ export const Main = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
   position: relative;
-  overflow-y: scroll;
+  overflow: hidden;
   margin: 0 auto;
   width: 100%;
-  min-height: calc(100vh - 4.8rem);
+  min-height: 100vh;
   height: auto;
-  @media (max-width: 420px) {
-    //모바일 대응
-    width: 100vw;
-    max-width: 100vw;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
 `;

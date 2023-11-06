@@ -8,7 +8,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4rem;
+  padding: 0 2rem;
   height: 4.8rem;
   background-color: ${theme.colors.black};
   position: sticky;
@@ -21,13 +21,10 @@ export const Header = styled.header`
 
 export const LogoWrap = styled(NavLink)`
   height: 2.2rem;
-  @media (max-width: 420px) {
-    height: 1.6rem;
-  }
 `;
 
 export const Logo = styled.img`
-  width: 100%;
+  width: auto;
   height: 100%;
   object-fit: fill;
 `;

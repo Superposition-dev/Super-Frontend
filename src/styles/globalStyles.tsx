@@ -13,6 +13,12 @@ const style = css`
       font-size: 10px;
     }
   }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    word-break: keep-all;
+  }
   body {
     box-sizing: border-box;
     height: 100vh;
