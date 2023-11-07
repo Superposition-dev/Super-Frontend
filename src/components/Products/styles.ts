@@ -42,7 +42,7 @@ export const SearchWrap = styled.form<{ isSearch: boolean }>`
 `;
 
 export const SearchInput = styled.input`
-  width: 90%;
+  width: 95%;
   height: 100%;
   color: ${theme.colors.black};
   margin: 0 auto;
@@ -53,7 +53,6 @@ export const SearchInput = styled.input`
 `;
 
 export const Button = styled.button`
-
   position: absolute;
   right: 2.4rem;
   border: none;
@@ -72,7 +71,7 @@ export const ProductItem = styled(Link)`
   height: auto;
   @media (max-width: 1024px) {
     width: calc(25% - 1.6rem);
-  };
+  }
   @media (max-width: 428px) {
     width: calc(50% - 1.6rem);
   }
