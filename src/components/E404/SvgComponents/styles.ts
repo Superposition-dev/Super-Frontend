@@ -21,8 +21,30 @@ const Bounce = keyframes`
   100% {transform: scale(1.0);}
 `;
 
+const Stroke = keyframes`
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1000;
+  }
+`;
+
 export const Svg = styled.div`
   margin-bottom: 3rem;
+  .ring {
+    animation: ${Stroke} 2s ease-in infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 1;
+  }
   .left-four {
     animation: ${FadeIn} 1s 1s forwards;
     transform-box: fill-box;
