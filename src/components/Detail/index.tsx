@@ -2,10 +2,12 @@ import { useLocation, useParams } from 'react-router-dom';
 import * as S from './styles';
 import { useMutation, useQuery } from 'react-query';
 import { getPost, likePost } from '../../api/postsAPI';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { patchGoogle, patchInsta, patchView } from '../../api/logAPI';
 import { checkLog, toggleLike } from '../../util/localstorage';
 import { Product } from '../../interface/products';
+
+const GOOGLE_FORM_URL = 'https://forms.gle/uH2GTcxsqKra889y6';
 
 export default function Detail() {
   const [products, setProducts] = useState<Product>(null!);
@@ -15,31 +17,31 @@ export default function Detail() {
   const qr = query.get('qr');
   const likedPosts = JSON.parse(String(localStorage.getItem('likedPosts'))) || [];
   const isLiked = products && likedPosts.includes(products.productId);
-
   useQuery(`product`, () => getPost(Number(id), qr as string), {
     onSuccess: (data) => {
       setProducts(data);
+      console.log(data, products);
     },
   });
   const { mutate: likeMutate } = useMutation(likePost);
 
-  const {mutate:instarMutate} = useMutation(patchInsta,{
-    onSuccess:()=>{
-      console.log('인스타 1회')
-    }
-  })
+  const { mutate: instarMutate } = useMutation(patchInsta, {
+    onSuccess: () => {
+      console.log('인스타 1회');
+    },
+  });
 
-  const {mutate:buyMutate} = useMutation(patchGoogle,{
-    onSuccess:()=>{
-      console.log('구글 1회')
-    }
-  })
+  const { mutate: buyMutate } = useMutation(patchGoogle, {
+    onSuccess: () => {
+      console.log('구글 1회');
+    },
+  });
 
-  const {mutate:viewMutate} = useMutation(patchView,{
-    onSuccess:()=>{
-      console.log('뷰 1회')
-    }
-  })
+  const { mutate: viewMutate } = useMutation(patchView, {
+    onSuccess: () => {
+      console.log('뷰 1회');
+    },
+  });
 
   const onInstarClick = (id: number, url: string) => {
     checkLog('insta', id) === true ? window.open(url, '_blank') : instarMutate(id);
@@ -49,9 +51,9 @@ export default function Detail() {
 
   const onBuyClick = (id: number) => {
     checkLog('buy', id) === true
-      ? window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank')
+      ? window.open(GOOGLE_FORM_URL, '_blank')
       : buyMutate(id);
-    window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank');
+    window.open(GOOGLE_FORM_URL, '_blank');
   };
 
   const onLikeClick = async (id: number) => {
@@ -59,18 +61,15 @@ export default function Detail() {
     likeMutate({ id, like });
   };
 
-  const onView = (id:number) => {
-    checkLog('view',id) === true
-    ? console.log('이미 봄')
-    :
-    viewMutate(id)
-  }
+  const onView = (id: number) => {
+    checkLog('view', id) === true ? console.log('이미 봄') : viewMutate(id);
+  };
 
-  useEffect(()=>{
-    if(!products) return
-    onView(products&&products.productId)
+  useEffect(() => {
+    if (!products) return;
+    onView(products && products.productId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[products])
+  }, [products]);
 
   return (
     <S.Tool>
@@ -85,10 +84,20 @@ export default function Detail() {
           </S.Writing>
           <S.InfoWrap>
             <S.Tools>
-              <div style={{ marginBottom: '1rem' }}>
+              <div style={{ width:'100%', marginBottom: '1rem' }}>
+                <S.Name>{products.title}</S.Name>
                 <S.Anrdma>
-                  <S.Name>{products.title}</S.Name>
                   <S.Num>{`No.Sup${String(products.productId).padStart(3, '0')}`}</S.Num>
+                  <S.icons>
+                    <S.Function
+                      onClick={() => onInstarClick(products.productId, products.instar)}
+                      src="/icons/instagram.svg"
+                      alt="인스타그램"
+                    />
+                    <S.HeartWrap onClick={() => onLikeClick(products.productId)}>
+                      {isLiked ? <S.FillHeart /> : <S.EmptHeart />}
+                    </S.HeartWrap>
+                  </S.icons>
                 </S.Anrdma>
                 <S.Tags>
                   {products.tag &&
@@ -97,16 +106,6 @@ export default function Detail() {
                     })}
                 </S.Tags>
               </div>
-              <S.icons>
-                <S.Function
-                  onClick={() => onInstarClick(products.productId, products.instar)}
-                  src="/icons/instagram.svg"
-                  alt="인스타그램"
-                />
-                <S.HeartWrap onClick={() => onLikeClick(products.productId)}>
-                  {isLiked ? <S.FillHeart /> : <S.EmptHeart />}
-                </S.HeartWrap>
-              </S.icons>
             </S.Tools>
             <div>
               <S.One>
@@ -126,7 +125,7 @@ export default function Detail() {
                 <S.Artwork>{products.description}</S.Artwork>
               </S.Three>
             </div>
-            <S.Price>\ {`${String(products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}원</S.Price>
+            <S.Price>{`${String(products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}원</S.Price>
             <S.Btn onClick={() => onBuyClick(products.productId)}>구매하기</S.Btn>
           </S.InfoWrap>
         </>

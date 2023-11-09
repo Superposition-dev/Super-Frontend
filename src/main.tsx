@@ -7,6 +7,7 @@ import ScrollToTop from './util/scrollTop.tsx';
 
 // if (import.meta.env.MODE === 'development') {
 //   worker.start({ onUnhandledRequest: 'bypass' });
+//   console.log('mock server started');
 // }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
