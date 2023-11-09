@@ -11,7 +11,10 @@ function Main() {
             <S.Text>세상을 꿈 꿉니다.</S.Text>
           </S.TextWrap>
         </S.TitleWrap>
-        <S.SubTitle>What we're doing</S.SubTitle>
+        <S.SubTitle>
+          What we're doing
+          <S.Cat src="/images/onlyCat.png" alt="cat" />
+        </S.SubTitle>
         <S.BallContainer>
           <S.BallWrap>
             <S.Ball>공간과 미술의 만남</S.Ball>

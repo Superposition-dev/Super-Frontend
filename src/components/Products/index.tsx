@@ -7,6 +7,7 @@ import { getPosts } from '../../api/postsAPI';
 import Skeleton from '../common/Skeleton';
 import { useIsMobile, useIsTablet } from '../../hooks/mediaQuery';
 import { Product } from '../../interface/products';
+
 /*eslint-disable*/
 
 function Products() {
@@ -41,6 +42,7 @@ function Products() {
         <S.SearchInput placeholder="작가 또는 작품명을 입력해주세요." ref={searchInput} />
         <S.Button>검색</S.Button>
       </S.SearchWrap>
+
       <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 4 : 5}>
         {isFetching ? (
           // 로딩 중일 때 Skeleton 컴포넌트를 표시
