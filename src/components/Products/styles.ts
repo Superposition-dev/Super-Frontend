@@ -87,7 +87,7 @@ export const Error = styled.div`
 `;
 
 export const ErrorText = styled.p`
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: ${theme.colors.white};
   text-align: center;
