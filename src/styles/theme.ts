@@ -18,6 +18,11 @@ const font = {
       fontWeight: '400',
       lineHeight: '1.2',
     },
+    b22:{
+      fontSize: '2.2rem',
+      fontWeight: '700',
+      lineHeight: '1.2',
+    },  
     b20: {
       fontSize: '2rem',
       fontWeight: '700',
@@ -31,7 +36,7 @@ const font = {
     r16: {
       fontSize: '1.6rem',
       fontWeight: '400',
-      lineHeight: '1.2',
+      lineHeight: '1.4',
     },
     r14: {
       fontSize: '1.4rem',
@@ -42,6 +47,11 @@ const font = {
       fontSize: '1.2rem',
       fontWeight: '400',
       lineHeight: '1.4',
+    },
+    b14:{
+      fontSize: '1.4rem',
+      fontWeight: '700',
+      lineHeight: '1.2',
     },
     b12: {
       fontSize: '1.2rem',
