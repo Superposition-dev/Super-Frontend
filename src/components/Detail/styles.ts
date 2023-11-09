@@ -43,17 +43,21 @@ export const Tools = styled.ul`
 
 export const Anrdma = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 1rem;
+  margin: 2rem 0 ;
 `;
 
 export const icons = styled.div`
   display: flex;
   gap: 1rem;
+  margin-right: 0.8rem;
 `;
 
 export const Name = styled.p`
-  text-align: right;
+  width: 100%;
+  text-align: left;
   color: #fefefe;
   ${theme.font.mobile.b20};
   word-wrap: break-word;
@@ -61,7 +65,7 @@ export const Name = styled.p`
 
 export const Num = styled.p`
   color: ${theme.colors.gray};
-  ${theme.font.mobile.r12};
+  ${theme.font.mobile.r16};
   word-wrap: break-word;
 `;
 
@@ -76,7 +80,8 @@ export const Tags = styled.div`
 `;
 
 export const Tag = styled.div`
-  ${theme.font.mobile.b12};
+  ${theme.font.mobile.r16};
+  font-weight: 700;
   color: ${theme.colors.white};
 `;
 
@@ -140,13 +145,11 @@ export const Artwork = styled.p`
 
 export const Price = styled.p`
   color: #fefefe;
-  font-size: 2rem;
-  font-family: Pretendard;
-  font-weight: 700;
-  line-height: 2.4rem;
+  ${theme.font.mobile.b22};
   word-wrap: break-word;
   margin-top: 4rem;
-  margin-bottom: 8rem;
+  margin-bottom: 6rem;
+  text-align: right;
 `;
 
 export const Btn = styled.button`

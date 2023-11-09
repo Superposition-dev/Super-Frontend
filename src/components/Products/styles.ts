@@ -17,7 +17,7 @@ export const TitleWrap = styled.div`
 `;
 
 export const Title = styled.h1`
-  ${theme.font.mobile.r30};
+  ${theme.font.mobile.r28};
   font-family: 'Lemon', serif;
   color: ${theme.colors.white};
   text-align: center;
@@ -75,4 +75,20 @@ export const ProductItem = styled(Link)`
   @media (max-width: 428px) {
     width: calc(50% - 1.6rem);
   }
+`;
+
+export const Error = styled.div`
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ErrorText = styled.p`
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: ${theme.colors.white};
+  text-align: center;
 `;

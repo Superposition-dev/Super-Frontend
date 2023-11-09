@@ -13,7 +13,7 @@ function Routers() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:id" element={<Detail />} />
       </Route>
-      <Route path="/*" element={<E404Page />} />
+      <Route path="*" element={<E404Page />} />
     </Routes>
   );
 }

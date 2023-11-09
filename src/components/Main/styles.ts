@@ -50,10 +50,18 @@ export const Text = styled.p``;
 
 export const SubTitle = styled.h2`
   font-family: 'Lemon', serif;
-  ${theme.font.mobile.r30};
+  ${theme.font.mobile.r26};
   color: ${theme.colors.white};
   text-align: center;
   margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+`;
+
+export const Cat = styled.img`
+  width: 4rem;
+  height: auto;
 `;
 
 export const BallWrap = styled.div`
