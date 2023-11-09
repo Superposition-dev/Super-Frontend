@@ -7,6 +7,8 @@ import { patchGoogle, patchInsta, patchView } from '../../api/logAPI';
 import { checkLog, toggleLike } from '../../util/localstorage';
 import { Product } from '../../interface/products';
 
+const GOOGLE_FORM_URL = 'https://forms.gle/uH2GTcxsqKra889y6';
+
 export default function Detail() {
   const [products, setProducts] = useState<Product>(null!);
   const { id } = useParams();
@@ -49,9 +51,9 @@ export default function Detail() {
 
   const onBuyClick = (id: number) => {
     checkLog('buy', id) === true
-      ? window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank')
+      ? window.open(GOOGLE_FORM_URL, '_blank')
       : buyMutate(id);
-    window.open('https://docs.google.com/forms/d/1pK-LO2_Zw7vN43BXQG_khJuCXg1RCPpzP-MFVUxgoYs/edit?pli=1', '_blank');
+    window.open(GOOGLE_FORM_URL, '_blank');
   };
 
   const onLikeClick = async (id: number) => {
@@ -82,28 +84,28 @@ export default function Detail() {
           </S.Writing>
           <S.InfoWrap>
             <S.Tools>
-              <div style={{ marginBottom: '1rem' }}>
+              <div style={{ width:'100%', marginBottom: '1rem' }}>
+                <S.Name>{products.title}</S.Name>
                 <S.Anrdma>
-                  <S.Name>{products.title}</S.Name>
                   <S.Num>{`No.Sup${String(products.productId).padStart(3, '0')}`}</S.Num>
+                  <S.icons>
+                    <S.Function
+                      onClick={() => onInstarClick(products.productId, products.instar)}
+                      src="/icons/instagram.svg"
+                      alt="인스타그램"
+                    />
+                    <S.HeartWrap onClick={() => onLikeClick(products.productId)}>
+                      {isLiked ? <S.FillHeart /> : <S.EmptHeart />}
+                    </S.HeartWrap>
+                  </S.icons>
                 </S.Anrdma>
                 <S.Tags>
-                  {products.tag &&
-                    products.tag.map((item: string) => {
+                  {products.tags &&
+                    products.tags.map((item: string) => {
                       return <S.Tag key={item}>#{item}</S.Tag>;
                     })}
                 </S.Tags>
               </div>
-              <S.icons>
-                <S.Function
-                  onClick={() => onInstarClick(products.productId, products.instar)}
-                  src="/icons/instagram.svg"
-                  alt="인스타그램"
-                />
-                <S.HeartWrap onClick={() => onLikeClick(products.productId)}>
-                  {isLiked ? <S.FillHeart /> : <S.EmptHeart />}
-                </S.HeartWrap>
-              </S.icons>
             </S.Tools>
             <div>
               <S.One>
@@ -123,7 +125,7 @@ export default function Detail() {
                 <S.Artwork>{products.description}</S.Artwork>
               </S.Three>
             </div>
-            <S.Price>{`\u{20A9} ${String(products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}원</S.Price>
+            <S.Price>{`${String(products.price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`}원</S.Price>
             <S.Btn onClick={() => onBuyClick(products.productId)}>구매하기</S.Btn>
           </S.InfoWrap>
         </>
