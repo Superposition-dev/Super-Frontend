@@ -20,28 +20,15 @@ export default function Detail() {
   useQuery(`product`, () => getPost(Number(id), qr as string), {
     onSuccess: (data) => {
       setProducts(data);
-      console.log(data, products);
     },
   });
   const { mutate: likeMutate } = useMutation(likePost);
 
-  const { mutate: instarMutate } = useMutation(patchInsta, {
-    onSuccess: () => {
-      console.log('인스타 1회');
-    },
-  });
+  const { mutate: instarMutate } = useMutation(patchInsta);
 
-  const { mutate: buyMutate } = useMutation(patchGoogle, {
-    onSuccess: () => {
-      console.log('구글 1회');
-    },
-  });
+  const { mutate: buyMutate } = useMutation(patchGoogle);
 
-  const { mutate: viewMutate } = useMutation(patchView, {
-    onSuccess: () => {
-      console.log('뷰 1회');
-    },
-  });
+  const { mutate: viewMutate } = useMutation(patchView);
 
   const onInstarClick = (id: number, url: string) => {
     checkLog('insta', id) === true ? window.open(url, '_blank') : instarMutate(id);
@@ -62,7 +49,7 @@ export default function Detail() {
   };
 
   const onView = (id: number) => {
-    checkLog('view', id) === true ? console.log('이미 봄') : viewMutate(id);
+    checkLog('view', id) !== true && viewMutate(id);
   };
 
   useEffect(() => {
@@ -104,10 +91,11 @@ export default function Detail() {
                   </S.icons>
                 </S.Anrdma>
                 <S.Tags>
-                  {products.tag &&
-                    products.tag.map((item: string) => {
-                      return <S.Tag key={item}>#{item}</S.Tag>;
-                    })}
+                  {
+                    products.tags.map((item: string) => (
+                      <S.Tag key={item}>#{item}</S.Tag>
+                    ))
+                  }
                 </S.Tags>
               </div>
             </S.Tools>
