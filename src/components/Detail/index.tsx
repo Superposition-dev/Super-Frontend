@@ -71,6 +71,10 @@ export default function Detail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[])
+
   return (
     <S.Tool>
       {products && (
