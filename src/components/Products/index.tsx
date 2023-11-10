@@ -1,4 +1,3 @@
-import { MasonryGrid } from '@egjs/react-grid';
 import * as S from './styles';
 import ProductItem from './ProductItem';
 import { useState, useMemo, useRef } from 'react';
@@ -50,7 +49,7 @@ function Products() {
             <S.ErrorText>검색 결과가 존재하지 않습니다.</S.ErrorText>
           </S.Error>
       }
-      <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 4 : 5}>
+      <S.MasonryItems mobile={mobile} tablet={tablet}>
         {isFetching ? (
           // 로딩 중일 때 Skeleton 컴포넌트를 표시
           <Skeleton />
@@ -62,7 +61,7 @@ function Products() {
             </S.ProductItem>
           ))
         )}
-      </MasonryGrid>
+      </S.MasonryItems>
     </S.Container>
   );
 }
