@@ -1,4 +1,3 @@
-import { MasonryGrid } from '@egjs/react-grid';
 import * as S from './styles';
 import ProductItem from './ProductItem';
 import { useState, useMemo, useRef } from 'react';
@@ -7,6 +6,7 @@ import { getPosts } from '../../api/postsAPI';
 import Skeleton from '../common/Skeleton';
 import { useIsMobile, useIsTablet } from '../../hooks/mediaQuery';
 import { Product } from '../../interface/products';
+import Cat from './Catsvg';
 
 /*eslint-disable*/
 
@@ -16,7 +16,7 @@ function Products() {
   const searchInput = useRef<HTMLInputElement>(null);
   const mobile = useIsMobile();
   const tablet = useIsTablet();
-  const { isFetching, refetch } = useQuery('products', () => getPosts(searchInput.current?.value), {
+  const { isFetching, refetch, isError } = useQuery('products', () => getPosts(searchInput.current?.value), {
     onSuccess: (data) => {
       setProducts(data);
     },
@@ -42,8 +42,14 @@ function Products() {
         <S.SearchInput placeholder="작가 또는 작품명을 입력해주세요." ref={searchInput} />
         <S.Button>검색</S.Button>
       </S.SearchWrap>
-
-      <MasonryGrid style={{ width: '100%' }} gap={16} align={'center'} column={mobile ? 2 : tablet ? 4 : 5}>
+      {
+        isError &&
+          <S.Error>
+            <Cat/>
+            <S.ErrorText>검색 결과가 존재하지 않습니다.</S.ErrorText>
+          </S.Error>
+      }
+      <S.MasonryItems mobile={mobile} tablet={tablet}>
         {isFetching ? (
           // 로딩 중일 때 Skeleton 컴포넌트를 표시
           <Skeleton />
@@ -55,12 +61,9 @@ function Products() {
             </S.ProductItem>
           ))
         )}
-      </MasonryGrid>
+      </S.MasonryItems>
     </S.Container>
   );
 }
 
 export default Products;
-// {productsMemo &&
-//
-//   })}

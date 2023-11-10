@@ -63,17 +63,25 @@ export const Button = styled.button`
   color: ${theme.colors.black};
 `;
 
+export const MasonryItems = styled.div<{mobile:boolean,tablet:boolean}>`
+  column-width: ${(props) => (props.mobile ? '20rem' : props.tablet ? '50%' : '100%')};
+`
+
 export const ProductItem = styled(Link)`
   display: inline-block;
   text-decoration: none;
+  box-sizing: border-box;
+  break-inside: avoid;
+  padding: 0.8rem;
   cursor: pointer;
+  
   width: calc(20% - 1.6rem);
   height: auto;
   @media (max-width: 1024px) {
     width: calc(25% - 1.6rem);
   }
   @media (max-width: 428px) {
-    width: calc(50% - 1.6rem);
+    width: calc(50%);
   }
 `;
 
@@ -87,7 +95,7 @@ export const Error = styled.div`
 `;
 
 export const ErrorText = styled.p`
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: ${theme.colors.white};
   text-align: center;
