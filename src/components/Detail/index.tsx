@@ -104,8 +104,8 @@ export default function Detail() {
                   </S.icons>
                 </S.Anrdma>
                 <S.Tags>
-                  {products.tag &&
-                    products.tag.map((item: string) => {
+                  {products.tags &&
+                    products.tags.map((item: string) => {
                       return <S.Tag key={item}>#{item}</S.Tag>;
                     })}
                 </S.Tags>

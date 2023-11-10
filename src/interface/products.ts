@@ -10,6 +10,6 @@ export type Product = {
   description: string;
   picture: string;
   price: number;
-  tag: string[];
+  tags: string[];
   instar: string;
 }
