@@ -9,6 +9,11 @@ export type Product = {
   artist: string;
   description: string;
   picture: string;
+  pictureInfo:{
+    size: string;
+    type: string;
+    year: number;
+  }
   price: number;
   tags: string[];
   instar: string;

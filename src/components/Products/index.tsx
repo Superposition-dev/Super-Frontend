@@ -20,9 +20,10 @@ function Products() {
     onSuccess: (data) => {
       setProducts(data);
     },
+    retry: false,
   });
   const productsMemo = useMemo(() => products, [products]);
-
+  console.log(isError)
   const onSearchClick = (e: React.FormEvent) => {
     e.preventDefault();
     refetch();
@@ -43,26 +44,29 @@ function Products() {
         <S.Button>검색</S.Button>
       </S.SearchWrap>
       {
-        isError &&
+        isError ?(
+          
           <S.Error>
             <Cat/>
             <S.ErrorText>검색 결과가 존재하지 않습니다.</S.ErrorText>
           </S.Error>
-      }
-      <S.MasonryItems mobile={mobile} tablet={tablet}>
-        {isFetching ? (
-          // 로딩 중일 때 Skeleton 컴포넌트를 표시
-          <Skeleton />
-        ) : (
-          // 데이터가 로딩되고 나면 제품 목록을 렌더링
-          productsMemo?.map((item: Product, value) => (
-            <S.ProductItem key={value * 20} to={`/products/${item.productId}?qr=false`}>
-              <ProductItem item={item} />
-            </S.ProductItem>
-          ))
-        )}
-      </S.MasonryItems>
-    </S.Container>
+        ):(
+          <S.MasonryItems mobile={mobile} tablet={tablet}>
+            {isFetching ? (
+              // 로딩 중일 때 Skeleton 컴포넌트를 표시
+              <Skeleton />
+            ) : (
+              // 데이터가 로딩되고 나면 제품 목록을 렌더링
+              productsMemo?.map((item: Product, value) => (
+                <S.ProductItem key={value * 20} to={`/products/${item.productId}?qr=false`}>
+                  <ProductItem item={item} />
+                </S.ProductItem>
+              ))
+            )}
+          </S.MasonryItems>
+          )
+        }
+</S.Container>
   );
 }
 
