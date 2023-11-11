@@ -71,7 +71,7 @@ export default function Detail() {
           </S.ImageWrap>
           <S.Writing>
             무단 도용 및 재배포를 금지합니다.
-            <br />@ 2023.{`${products.artist}`}. All rights reserved.
+            <br />@ {products.pictureInfo.year}.{`${products.artist}`}. All rights reserved.
           </S.Writing>
           <S.InfoWrap>
             <S.Tools>
@@ -107,9 +107,9 @@ export default function Detail() {
               <S.Two>
                 <S.InfoTitle>작품 정보</S.InfoTitle>
                 <S.Cen>
-                  캔버스에 유화, 73*73cm
+                  {products.pictureInfo.type}, {products.pictureInfo.size}
                   <br />
-                  2023
+                  {products.pictureInfo.year}
                 </S.Cen>
               </S.Two>
               <S.Three>
