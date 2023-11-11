@@ -9,7 +9,12 @@ export type Product = {
   artist: string;
   description: string;
   picture: string;
+  pictureInfo:{
+    size: string;
+    type: string;
+    year: number;
+  }
   price: number;
-  tag: string[];
+  tags: string[];
   instar: string;
 }

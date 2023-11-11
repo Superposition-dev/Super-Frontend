@@ -3,8 +3,8 @@ function Cat() {
   return (
     <S.Svg>
       <svg
-        width="280"
-        height="160"
+        width="320"
+        height="220"
         viewBox="0 0 253 131"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

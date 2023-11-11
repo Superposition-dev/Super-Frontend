@@ -26,7 +26,6 @@ export const PostHandler = [
   rest.patch('/products/:id/like', async (req, res, ctx) => {
     const id = req.params.productId;
     const body = await req.json();
-    console.log(body);
     const { isLike } = body;
     const product = PostsData.filter((product) => product.productId === Number(id));
     if (!product) {
